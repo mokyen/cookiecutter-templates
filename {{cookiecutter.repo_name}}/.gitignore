@@ -1,0 +1,11 @@
+*.py[cod]
+
+# Packages
+*.egg
+*.egg-info
+
+# Unit test / coverage reports
+.coverage
+.tox
+.pytest_cache
+
