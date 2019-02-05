@@ -14,7 +14,6 @@ setup(
     description='{{ cookiecutter.project_short_description }}',
     long_description=readme(),
     author='{{ cookiecutter.full_name }}',
-    author_email='{{ cookiecutter.email }}',
     url='https://github.com/{{ cookiecutter.github_username }}/{{ cookiecutter.repo_name }}',
     packages=[
         '{{ cookiecutter.repo_name }}',
@@ -39,31 +38,3 @@ setup(
         'Programming Language :: Python :: Implementation :: PyPy',
     ],
 )
-
-from setuptools import setup, find_packages
-
-
-def readme():
-    with open('README.rst') as f:
-        return f.read()
-
-
-def version():
-    with open('VERSION') as version_file:
-        return version_file.read().strip()
-
-
-setup(name='hyphelper',
-      version=version(),
-      description='Help make life easier when using Hyperlynx SI/DRC',
-      long_description=readme(),
-      long_description_content_type='text/x-rst',
-      url='https://bitbucket.org/jdpatt/hyphelper/',
-      keywords='hyperlynx drc pi si mentor cadence',
-      author='David Patterson',
-      packages=find_packages(exclude=['docs', 'tests*']),
-      python_requires='>=3.4',
-      install_requires=["Click", "openpyxl"],
-      entry_points={"console_scripts": ['hyphelper = hyphelper.hyphelper:cli']},
-      include_package_data=True,
-      zip_safe=False)
