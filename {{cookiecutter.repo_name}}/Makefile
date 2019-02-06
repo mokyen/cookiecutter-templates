@@ -1,7 +1,7 @@
 .PHONY: clean test lint run
 
 tox:
-	tox
+	tox -p all
 
 lint:
 	tox -e flake8,pylint 
