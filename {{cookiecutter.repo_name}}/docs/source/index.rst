@@ -6,6 +6,8 @@
 Welcome to {{ cookiecutter.repo_name }}'s documentation!
 ========================================================
 
+.. mdinclude:: ../../README.md
+
 .. toctree::
    :maxdepth: 2
    :caption: Contents:
