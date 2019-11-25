@@ -41,19 +41,12 @@ class {{cookiecutter.repo_name}}(QtWidgets.QMainWindow, Ui_MainWindow):
         # Record the system information.
         self.log_system_information()
 
-        # Initialize Variables for Prototype
-        self.project_file = None
-        self._configuration = {"version": __version__}
-
-        # self.read_in_config("example.json")
-
     def connect_actions(self):
         """Connect all the GUI elements to the business logic."""
         # Global App Controls
         self.actionExit.triggered.connect(QtCore.QCoreApplication.instance().quit)
         self.actionAbout.triggered.connect(self.about)
         self.actionDocumentation.triggered.connect(documentation)
-
 
     def log_system_information(self):
         """Log the system information to aid in debugging user issues."""
