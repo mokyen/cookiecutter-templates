@@ -1,0 +1,19 @@
+*.py[cod]
+
+# Packages
+*.egg
+*.egg-info
+
+# Unit test / coverage reports
+.coverage
+.tox
+.pytest_cache
+
+.venv
+__pycache__/
+*.log
+.tox
+htmlcov
+.mypy_cache
+.coverage
+docs/build

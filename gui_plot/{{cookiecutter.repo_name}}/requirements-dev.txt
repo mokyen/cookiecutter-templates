@@ -1,0 +1,11 @@
+# Tools
+black
+pylint
+pytest
+pytest-cov
+pytest-qt
+tox
+
+# Dependencies
+Click
+PySide2
