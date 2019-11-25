@@ -9,3 +9,5 @@ tox
 # Dependencies
 Click
 PySide2
+pyqtgraph
+numpy

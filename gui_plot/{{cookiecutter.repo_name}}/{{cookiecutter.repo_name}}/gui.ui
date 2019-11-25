@@ -47,7 +47,7 @@
       <property name="tabShape">
        <enum>QTabWidget::Rounded</enum>
       </property>
-      <widget class="QWidget" name="plot">
+      <widget class="QWidget" name="window">
        <property name="windowTitle">
         <string>Plot</string>
        </property>

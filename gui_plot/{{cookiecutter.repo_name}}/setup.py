@@ -20,7 +20,7 @@ setup(
     ],
     package_dir={'{{ cookiecutter.repo_name }}': '{{ cookiecutter.repo_name }}'},
     include_package_data=True,
-    install_requires=["Click", "PySide2",],
+    install_requires=["Click", "PySide2", "pyqtgraph", "numpy"],
     license='MIT',
     zip_safe=False,
     keywords='{{ cookiecutter.repo_name }}',

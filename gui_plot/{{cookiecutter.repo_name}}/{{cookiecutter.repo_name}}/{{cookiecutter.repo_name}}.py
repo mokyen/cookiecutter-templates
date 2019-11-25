@@ -1,13 +1,17 @@
 """ {{cookiecutter.repo_name}}"""
 import json
 import platform
+import time
 import webbrowser
 from pathlib import Path
+from random import uniform
 
 from {{cookiecutter.repo_name}} import __author__, __version__
 from {{cookiecutter.repo_name}}.gui import Ui_MainWindow
 from {{cookiecutter.repo_name}}.logger import ThreadLogHandler, setup_logger
 from PySide2 import QtCore, QtWidgets
+import numpy as np
+import serial
 
 CONSOLE_TEXT_COLORS = {
     "WARNING": "black",
@@ -41,13 +45,22 @@ class {{cookiecutter.repo_name}}(QtWidgets.QMainWindow, Ui_MainWindow):
         # Record the system information.
         self.log_system_information()
 
+        self.interface = self.setup_serial_interface("COM1", 9600)
+        self.plot = self.setup_plot()
+        self.series_length = 1000
+        self.data = np.linspace(0, 0, self.series_length)
+        self.index = -self.series_length
+
+        while True:
+            time.sleep(1)
+            self.update_plot()
+
     def connect_actions(self):
         """Connect all the GUI elements to the business logic."""
         # Global App Controls
         self.actionExit.triggered.connect(QtCore.QCoreApplication.instance().quit)
         self.actionAbout.triggered.connect(self.about)
         self.actionDocumentation.triggered.connect(documentation)
-
 
     def log_system_information(self):
         """Log the system information to aid in debugging user issues."""
@@ -74,6 +87,25 @@ class {{cookiecutter.repo_name}}(QtWidgets.QMainWindow, Ui_MainWindow):
                 f"Authors: {__author__}\n"
             ),
         )
+
+    def setup_serial_interface(self, port, baud):
+        """Setup the serial port on the given interface and speed."""
+        return serial.Serial(port, baud)
+
+    def setup_plot(self):
+        """Setup an empty plot."""
+        plot = self.graphicsView.addPlot()
+        plot.plot()
+        return plot
+
+    def update_plot(self):
+        self.data[:-1] = self.data[1:]
+        # self.data[-1] = float(self.interface.readline())
+        self.data[-1] = float(uniform(0, 10))
+        self.index += 1
+        self.plot.setData(self.data)
+        self.plot.setPos(self.index, 0)
+        QtGui.QApplication.processEvents() 
 
 
 def documentation():

@@ -3,7 +3,7 @@
 # Form implementation generated from reading ui file './{{cookiecutter.repo_name}}/gui.ui',
 # licensing of './{{cookiecutter.repo_name}}/gui.ui' applies.
 #
-# Created: Mon Nov 25 11:05:14 2019
+# Created: Mon Nov 25 11:15:15 2019
 #      by: pyside2-uic  running on PySide2 5.13.2
 #
 # WARNING! All changes made in this file will be lost!
@@ -27,12 +27,12 @@ class Ui_MainWindow(object):
         self.mdiArea.setTabsClosable(False)
         self.mdiArea.setTabShape(QtWidgets.QTabWidget.Rounded)
         self.mdiArea.setObjectName("mdiArea")
-        self.plot = QtWidgets.QWidget()
-        self.plot.setObjectName("plot")
-        self.gridLayout = QtWidgets.QGridLayout(self.plot)
+        self.window = QtWidgets.QWidget()
+        self.window.setObjectName("window")
+        self.gridLayout = QtWidgets.QGridLayout(self.window)
         self.gridLayout.setContentsMargins(0, 0, 0, 0)
         self.gridLayout.setObjectName("gridLayout")
-        self.graphicsView = GraphicsWindow(self.plot)
+        self.graphicsView = GraphicsWindow(self.window)
         self.graphicsView.setObjectName("graphicsView")
         self.gridLayout.addWidget(self.graphicsView, 0, 0, 1, 1)
         self.verticalLayout.addWidget(self.mdiArea)
@@ -117,7 +117,7 @@ class Ui_MainWindow(object):
 
     def retranslateUi(self, MainWindow):
         MainWindow.setWindowTitle(QtWidgets.QApplication.translate("MainWindow", "{{cookiecutter.repo_name}}", None, -1))
-        self.plot.setWindowTitle(QtWidgets.QApplication.translate("MainWindow", "Plot", None, -1))
+        self.window.setWindowTitle(QtWidgets.QApplication.translate("MainWindow", "Plot", None, -1))
         self.menuFile.setTitle(QtWidgets.QApplication.translate("MainWindow", "&File", None, -1))
         self.menuHelp.setTitle(QtWidgets.QApplication.translate("MainWindow", "&Help", None, -1))
         self.menuView.setTitle(QtWidgets.QApplication.translate("MainWindow", "&View", None, -1))
