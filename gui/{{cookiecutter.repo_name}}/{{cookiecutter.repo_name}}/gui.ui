@@ -6,27 +6,18 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>1440</width>
-    <height>900</height>
+    <width>1280</width>
+    <height>800</height>
    </rect>
   </property>
   <property name="windowTitle">
-   <string>{{ cookiecutter.repo_name }}</string>
+   <string>{{cookiecutter.repo_name}}</string>
   </property>
-  <property name="dockNestingEnabled">
-   <bool>false</bool>
+  <property name="documentMode">
+   <bool>true</bool>
   </property>
   <widget class="QWidget" name="centralwidget">
-   <property name="sizePolicy">
-    <sizepolicy hsizetype="Expanding" vsizetype="Expanding">
-     <horstretch>0</horstretch>
-     <verstretch>4</verstretch>
-    </sizepolicy>
-   </property>
-   <layout class="QVBoxLayout" name="verticalLayout_2">
-    <property name="spacing">
-     <number>0</number>
-    </property>
+   <layout class="QVBoxLayout" name="verticalLayout">
     <property name="leftMargin">
      <number>0</number>
     </property>
@@ -46,46 +37,47 @@
     <rect>
      <x>0</x>
      <y>0</y>
-     <width>1440</width>
-     <height>22</height>
+     <width>1280</width>
+     <height>26</height>
     </rect>
    </property>
-   <property name="sizePolicy">
-    <sizepolicy hsizetype="Preferred" vsizetype="Preferred">
-     <horstretch>0</horstretch>
-     <verstretch>0</verstretch>
-    </sizepolicy>
+   <property name="defaultUp">
+    <bool>false</bool>
    </property>
    <widget class="QMenu" name="menuFile">
     <property name="title">
      <string>&amp;File</string>
     </property>
-    <addaction name="actionE_xit"/>
+    <addaction name="actionNew_Project"/>
+    <addaction name="actionOpen_Project"/>
+    <addaction name="actionSave"/>
+    <addaction name="actionSave_As"/>
+    <addaction name="separator"/>
+    <addaction name="actionExit"/>
    </widget>
-   <widget class="QMenu" name="menu_View">
-    <property name="title">
-     <string>&amp;View</string>
-    </property>
-    <addaction name="actionToggleConsole"/>
-    <addaction name="actionDebugMode"/>
-   </widget>
-   <widget class="QMenu" name="menu_Help">
+   <widget class="QMenu" name="menuHelp">
     <property name="title">
      <string>&amp;Help</string>
     </property>
-    <addaction name="actionAbout"/>
     <addaction name="actionDocumentation"/>
+    <addaction name="actionAbout"/>
+   </widget>
+   <widget class="QMenu" name="menuView">
+    <property name="title">
+     <string>&amp;View</string>
+    </property>
+    <addaction name="actionConsole_Visibility"/>
    </widget>
    <addaction name="menuFile"/>
-   <addaction name="menu_View"/>
-   <addaction name="menu_Help"/>
+   <addaction name="menuView"/>
+   <addaction name="menuHelp"/>
   </widget>
   <widget class="QStatusBar" name="statusbar"/>
-  <widget class="QDockWidget" name="console">
+  <widget class="QDockWidget" name="console_dock">
    <property name="sizePolicy">
     <sizepolicy hsizetype="Preferred" vsizetype="Preferred">
-     <horstretch>0</horstretch>
-     <verstretch>1</verstretch>
+     <horstretch>1</horstretch>
+     <verstretch>0</verstretch>
     </sizepolicy>
    </property>
    <property name="minimumSize">
@@ -94,32 +86,14 @@
      <height>113</height>
     </size>
    </property>
-   <property name="maximumSize">
-    <size>
-     <width>524287</width>
-     <height>524287</height>
-    </size>
-   </property>
-   <property name="allowedAreas">
-    <set>Qt::BottomDockWidgetArea</set>
-   </property>
    <property name="windowTitle">
     <string>Console</string>
    </property>
    <attribute name="dockWidgetArea">
     <number>8</number>
    </attribute>
-   <widget class="QWidget" name="dockWidgetContents">
-    <property name="sizePolicy">
-     <sizepolicy hsizetype="Preferred" vsizetype="Preferred">
-      <horstretch>0</horstretch>
-      <verstretch>0</verstretch>
-     </sizepolicy>
-    </property>
-    <layout class="QGridLayout" name="gridLayout_8">
-     <property name="sizeConstraint">
-      <enum>QLayout::SetNoConstraint</enum>
-     </property>
+   <widget class="QWidget" name="dockWidgetContents_2">
+    <layout class="QGridLayout" name="gridLayout_2">
      <property name="leftMargin">
       <number>0</number>
      </property>
@@ -133,15 +107,15 @@
       <number>0</number>
      </property>
      <item row="0" column="0">
-      <widget class="QPlainTextEdit" name="text_edit">
+      <widget class="QPlainTextEdit" name="console">
        <property name="sizePolicy">
         <sizepolicy hsizetype="Preferred" vsizetype="Preferred">
          <horstretch>0</horstretch>
          <verstretch>0</verstretch>
         </sizepolicy>
        </property>
-       <property name="sizeAdjustPolicy">
-        <enum>QAbstractScrollArea::AdjustIgnored</enum>
+       <property name="styleSheet">
+        <string notr="true">background-color:#CCCCCC;</string>
        </property>
        <property name="readOnly">
         <bool>true</bool>
@@ -150,16 +124,51 @@
         <number>200</number>
        </property>
        <property name="centerOnScroll">
-        <bool>true</bool>
+        <bool>false</bool>
        </property>
       </widget>
      </item>
     </layout>
    </widget>
   </widget>
-  <action name="actionAbout">
+  <action name="actionPreferences">
    <property name="text">
-    <string>About</string>
+    <string>Preferences</string>
+   </property>
+   <property name="shortcut">
+    <string>Ctrl+,</string>
+   </property>
+  </action>
+  <action name="actionExit">
+   <property name="text">
+    <string>Exit</string>
+   </property>
+   <property name="shortcut">
+    <string>Ctrl+Q</string>
+   </property>
+  </action>
+  <action name="actionNew_Project">
+   <property name="text">
+    <string>New Project</string>
+   </property>
+   <property name="shortcut">
+    <string>Ctrl+N</string>
+   </property>
+  </action>
+  <action name="actionSave">
+   <property name="text">
+    <string>Save</string>
+   </property>
+   <property name="shortcut">
+    <string>Ctrl+S</string>
+   </property>
+  </action>
+  <action name="actionOpen_Project">
+   <property name="text">
+    <string>Open</string>
+   </property>
+   <property name="shortcut">
+    <string>Ctrl+O</string>
    </property>
   </action>
   <action name="actionDocumentation">
@@ -167,7 +176,12 @@
     <string>Documentation</string>
    </property>
   </action>
-  <action name="actionToggleConsole">
+  <action name="actionAbout">
+   <property name="text">
+    <string>About</string>
+   </property>
+  </action>
+  <action name="actionConsole_Visibility">
    <property name="checkable">
     <bool>true</bool>
    </property>
@@ -175,41 +189,27 @@
     <bool>true</bool>
    </property>
    <property name="text">
-    <string>Console</string>
+    <string>Console Visibility</string>
    </property>
    <property name="shortcut">
     <string>Ctrl+`</string>
    </property>
-   <property name="shortcutContext">
-    <enum>Qt::ApplicationShortcut</enum>
-   </property>
   </action>
-  <action name="actionE_xit">
+  <action name="actionSave_As">
    <property name="text">
-    <string>E&amp;xit</string>
+    <string>Save As</string>
    </property>
    <property name="shortcut">
-    <string>Ctrl+Q</string>
-   </property>
-  </action>
-  <action name="actionDebugMode">
-   <property name="checkable">
-    <bool>true</bool>
-   </property>
-   <property name="checked">
-    <bool>true</bool>
-   </property>
-   <property name="text">
-    <string>Debug Mode</string>
+    <string>Ctrl+Shift+S</string>
    </property>
   </action>
  </widget>
  <resources/>
  <connections>
   <connection>
-   <sender>actionToggleConsole</sender>
-   <signal>triggered(bool)</signal>
-   <receiver>console</receiver>
+   <sender>actionConsole_Visibility</sender>
+   <signal>toggled(bool)</signal>
+   <receiver>console_dock</receiver>
    <slot>setVisible(bool)</slot>
    <hints>
     <hint type="sourcelabel">
@@ -217,24 +217,8 @@
      <y>-1</y>
     </hint>
     <hint type="destinationlabel">
-     <x>749</x>
-     <y>933</y>
-    </hint>
-   </hints>
-  </connection>
-  <connection>
-   <sender>console</sender>
-   <signal>visibilityChanged(bool)</signal>
-   <receiver>actionToggleConsole</receiver>
-   <slot>setChecked(bool)</slot>
-   <hints>
-    <hint type="sourcelabel">
-     <x>749</x>
-     <y>933</y>
-    </hint>
-    <hint type="destinationlabel">
-     <x>-1</x>
-     <y>-1</y>
+     <x>639</x>
+     <y>726</y>
     </hint>
    </hints>
   </connection>

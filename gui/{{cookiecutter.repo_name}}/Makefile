@@ -1,7 +1,7 @@
 .PHONY: gui clean test lint run
 
 gui:
-	pyside2-uic ./{{ cookiecutter.repo_name }}/view/gui.ui -o ./{{ cookiecutter.repo_name }}/view/ui.py
+	pyside2-uic ./{{cookiecutter.repo_name}}/gui.ui -o ./{{cookiecutter.repo_name}}/gui.py
 
 tox:
 	tox -p all

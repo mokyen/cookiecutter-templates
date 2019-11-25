@@ -1,59 +1,87 @@
-""" {{cookiecutter.repo_name}} """
-import logging
+""" {{cookiecutter.repo_name}}"""
+import json
 import platform
-import sys
+import webbrowser
 from pathlib import Path
 
-from {{cookiecutter.repo_name}} import __version__ as VERSION
+from {{cookiecutter.repo_name}} import __author__, __version__
+from {{cookiecutter.repo_name}}.gui import Ui_MainWindow
 from {{cookiecutter.repo_name}}.logger import ThreadLogHandler, setup_logger
-from {{cookiecutter.repo_name}}.view.gui import {{cookiecutter.repo_name}}_GUI
-from PySide2.QtCore import QCoreApplication, QThread
-from PySide2.QtWidgets import QApplication
+from PySide2 import QtCore, QtWidgets
+
+CONSOLE_TEXT_COLORS = {
+    "WARNING": "black",
+    "INFO": "black",
+    "DEBUG": "darkCyan",
+    "CRITICAL": "red",
+    "ERROR": "red",
+}
 
 
-class {{cookiecutter.repo_name}}:
+class {{cookiecutter.repo_name}}(QtWidgets.QMainWindow, Ui_MainWindow):
+    """Main {{cookiecutter.repo_name}} Window"""
 
     def __init__(self):
+        QtWidgets.QMainWindow.__init__(self)
         self.log = setup_logger("{{cookiecutter.repo_name}}", Path(__file__).parent.joinpath("{{cookiecutter.repo_name}}.log"))
 
-        app = QApplication([])
-        self.gui = {{cookiecutter.repo_name}}_GUI()
+        self.setupUi(self)
 
+        # Setup the rest of the GUI.
+        self.setWindowTitle("{{cookiecutter.repo_name}}")
+        self.connect_actions()
+        self.console_dock.setVisible(True)
+        self.menubar.setNativeMenuBar(False)  # Until Qt fixes QMenu for Catalina
+
+        # Add another handler so that we can emit log messages to the GUI.
         thread_log = ThreadLogHandler()
-        thread_log.new_record.connect(self.gui.log_message)
         self.log.addHandler(thread_log)
+        thread_log.new_record.connect(self.log_message)
 
-        self.gui.show()
+        # Record the system information.
+        self.log_system_information()
 
-        self.log.info(
-            "System: %s %s Version: %s", platform.system(), platform.release(), platform.version()
-        )
-        self.log.info("Python Version: %s", platform.python_version())
-        self.log.info("{{cookiecutter.repo_name}} Version: %s", VERSION)
-        self.log.info("Starting {{cookiecutter.repo_name}}...")
+        # Initialize Variables for Prototype
+        self.project_file = None
+        self._configuration = {"version": __version__}
+
+        # self.read_in_config("example.json")
+
+    def connect_actions(self):
+        """Connect all the GUI elements to the business logic."""
+        # Global App Controls
+        self.actionE_xit.triggered.connect(QCoreApplication.instance().quit)
+        self.actionAbout.triggered.connect(self.about)
+        self.actionDocumentation.triggered.connect(open_docs)
 
 
-        # Slot/Signal Connections between the GUI and {{cookiecutter.repo_name}}
-        # ----------------------------------------------------------------------------------------
-        app.aboutToQuit.connect(self.close_application)
+    def log_system_information(self):
+        """Log the system information to aid in debugging user issues."""
+        self.log.info(f"System: {platform.system()} {platform.release()}")
+        self.log.info(f"Python Version: {platform.python_version()}")
+        self.log.info(f"{{cookiecutter.repo_name}} Version: {__version__}")
 
-        sys.exit(app.exec_())
-
-    def close_application(self):
-        """Close any threads and then kill the application."""
-        QCoreApplication.instance().quit()
-
-    def toggle_debug_mode(self, state):
-        """Turn on or off debug throughout {{cookiecutter.repo_name}}."""
-        if state:
-            self.log.setLevel(logging.DEBUG)
+    def log_message(self, level, msg):
+        """Log any logger messages via the slot/signal mechanism so that its thread safe."""
+        if level in CONSOLE_TEXT_COLORS:
+            self.console.appendHtml(f'<p style="color:{CONSOLE_TEXT_COLORS[level]};">{msg}</p>')
         else:
-            self.log.setLevel(logging.INFO)
+            self.console.appendPlainText(msg)
+        self.console.ensureCursorVisible()
+
+    def about(self):
+        """Pop-up MessageBox with Generic Info."""
+        QtWidgets.QMessageBox.about(
+            self,
+            self.tr(f"{{cookiecutter.repo_name}} v{__version__}"),
+            self.tr(
+                f"{{cookiecutter.project_short_description}}"
+                f"Version: {__version__}\n"
+                f"Authors: {__author__}\n"
+            ),
+        )
 
 
-def main():
-    {{cookiecutter.repo_name}}()
-
-
-if __name__ == "__main__":
-    main()
+def documentation():
+    """Open the documentation for {{cookiecutter.repo_name}}."""
+    webbrowser.open("https://github.com/jdpatt/{{cookiecutter.repo_name}}")
