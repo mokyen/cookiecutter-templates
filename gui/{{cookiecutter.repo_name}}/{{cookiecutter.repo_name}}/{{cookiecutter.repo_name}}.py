@@ -50,9 +50,9 @@ class {{cookiecutter.repo_name}}(QtWidgets.QMainWindow, Ui_MainWindow):
     def connect_actions(self):
         """Connect all the GUI elements to the business logic."""
         # Global App Controls
-        self.actionE_xit.triggered.connect(QCoreApplication.instance().quit)
+        self.actionExit.triggered.connect(QtCore.QCoreApplication.instance().quit)
         self.actionAbout.triggered.connect(self.about)
-        self.actionDocumentation.triggered.connect(open_docs)
+        self.actionDocumentation.triggered.connect(documentation)
 
 
     def log_system_information(self):
