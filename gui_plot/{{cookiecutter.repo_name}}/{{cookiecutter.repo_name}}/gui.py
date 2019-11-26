@@ -32,7 +32,7 @@ class Ui_MainWindow(object):
         self.gridLayout = QtWidgets.QGridLayout(self.window)
         self.gridLayout.setContentsMargins(0, 0, 0, 0)
         self.gridLayout.setObjectName("gridLayout")
-        self.graphicsView = GraphicsWindow(self.window)
+        self.graphicsView = GraphicsLayoutWidget(self.window)
         self.graphicsView.setObjectName("graphicsView")
         self.gridLayout.addWidget(self.graphicsView, 0, 0, 1, 1)
         self.verticalLayout.addWidget(self.mdiArea)
@@ -139,4 +139,4 @@ class Ui_MainWindow(object):
         self.actionSave_As.setText(QtWidgets.QApplication.translate("MainWindow", "Save As", None, -1))
         self.actionSave_As.setShortcut(QtWidgets.QApplication.translate("MainWindow", "Ctrl+Shift+S", None, -1))
 
-from pyqtgraph import GraphicsWindow
+from pyqtgraph import GraphicsLayoutWidget

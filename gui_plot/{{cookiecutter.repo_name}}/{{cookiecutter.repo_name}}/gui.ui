@@ -65,7 +65,7 @@
          <number>0</number>
         </property>
         <item row="0" column="0">
-         <widget class="GraphicsWindow" name="graphicsView"/>
+         <widget class="GraphicsLayoutWidget" name="graphicsView"/>
         </item>
        </layout>
       </widget>
@@ -247,7 +247,7 @@
  </widget>
  <customwidgets>
   <customwidget>
-   <class>GraphicsWindow</class>
+   <class>GraphicsLayoutWidget</class>
    <extends>QGraphicsView</extends>
    <header>pyqtgraph</header>
   </customwidget>
