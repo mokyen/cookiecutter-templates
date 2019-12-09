@@ -5,6 +5,7 @@ pytest
 pytest-cov
 pytest-qt
 tox
+pre-commit
 
 # Dependencies
 Click
