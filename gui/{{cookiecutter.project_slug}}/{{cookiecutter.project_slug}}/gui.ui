@@ -11,7 +11,7 @@
    </rect>
   </property>
   <property name="windowTitle">
-   <string>{{cookiecutter.repo_name}}</string>
+   <string>{{cookiecutter.project_slug}}</string>
   </property>
   <property name="documentMode">
    <bool>true</bool>
