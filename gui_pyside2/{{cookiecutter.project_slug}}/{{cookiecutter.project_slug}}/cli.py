@@ -12,13 +12,15 @@ from PySide2.QtWidgets import QApplication
     invoke_without_command=True, context_settings=dict(help_option_names=["-h", "--help"])
 )
 @click.pass_context
+@click.option("--verbose", "-vv", is_flag=True, help="Enable debug prints.")
 @click.version_option()
-def main(ctx):
+def main(ctx, verbose):
     """CLI for {{cookiecutter.project_slug}}"""
+    ctx.obj = verbose
     click.echo("Opening {{cookiecutter.project_slug}} GUI.")
     if ctx.invoked_subcommand is None:
         app = QApplication([])
-        gui = {{cookiecutter.project_slug}}.{{cookiecutter.project_slug}}()
+        gui = {{cookiecutter.project_slug}}.{{cookiecutter.project_slug}}(verbose)
         gui.show()
         sys.exit(app.exec_())
 
