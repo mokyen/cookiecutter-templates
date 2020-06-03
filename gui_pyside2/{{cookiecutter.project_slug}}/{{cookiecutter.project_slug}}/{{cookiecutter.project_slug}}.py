@@ -1,4 +1,6 @@
 """{{cookiecutter.project_slug}}"""
+import logging
+
 from {{ cookiecutter.project_slug }} import logger
 from {{ cookiecutter.project_slug }}.gui import Ui_MainWindow
 
@@ -12,7 +14,7 @@ CONSOLE_TEXT_COLORS = {
     "ERROR": "red",
 }
 
-class {{cookiecutter.project_slug}}(QtWidgets.QMainWindow, Ui_MainWindow)):
+class {{cookiecutter.project_name}}(QtWidgets.QMainWindow, Ui_MainWindow):
 
     def __init__(self, verbose=False):
         self.log = logger.setup_logger("{{ cookiecutter.project_slug }}", "{{ cookiecutter.project_slug }}.log")

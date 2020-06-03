@@ -14,13 +14,13 @@ from PySide2.QtWidgets import QApplication
 @click.pass_context
 @click.option("--verbose", "-vv", is_flag=True, help="Enable debug prints.")
 @click.version_option()
-def main(ctx, verbose):
+def cli(ctx, verbose):
     """CLI for {{cookiecutter.project_slug}}"""
     ctx.obj = verbose
     click.echo("Opening {{cookiecutter.project_slug}} GUI.")
     if ctx.invoked_subcommand is None:
         app = QApplication([])
-        gui = {{cookiecutter.project_slug}}.{{cookiecutter.project_slug}}(verbose)
+        gui = {{cookiecutter.project_slug}}.{{cookiecutter.project_name}}(verbose)
         gui.show()
         sys.exit(app.exec_())
 
@@ -29,6 +29,3 @@ def sub_command_one():
     """Example Sub Command"""
     click.echo("{{cookiecutter.project_slug}} sub_command_one")
 {%- endif %}
-
-if __name__ == "__main__":
-    sys.exit(main())  # pragma: no cover
