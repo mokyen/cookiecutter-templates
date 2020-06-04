@@ -17,8 +17,8 @@ from PySide2.QtWidgets import QApplication
 def cli(ctx, verbose):
     """CLI for {{cookiecutter.project_slug}}"""
     ctx.obj = verbose
-    click.echo("Opening {{cookiecutter.project_slug}} GUI.")
     if ctx.invoked_subcommand is None:
+        click.echo("Opening {{cookiecutter.project_slug}} GUI.")
         app = QApplication([])
         gui = {{cookiecutter.project_slug}}.{{cookiecutter.project_name}}(verbose)
         gui.show()

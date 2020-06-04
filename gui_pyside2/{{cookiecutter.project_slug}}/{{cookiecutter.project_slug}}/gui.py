@@ -100,7 +100,7 @@ class Ui_MainWindow(object):
         QtCore.QMetaObject.connectSlotsByName(MainWindow)
 
     def retranslateUi(self, MainWindow):
-        MainWindow.setWindowTitle(QtWidgets.QApplication.translate("MainWindow", "{{cookiecutter.project_slug}}", None, -1))
+        MainWindow.setWindowTitle(QtWidgets.QApplication.translate("MainWindow", "{{cookiecutter.project_name}}", None, -1))
         self.menuFile.setTitle(QtWidgets.QApplication.translate("MainWindow", "&File", None, -1))
         self.menuHelp.setTitle(QtWidgets.QApplication.translate("MainWindow", "&Help", None, -1))
         self.menuView.setTitle(QtWidgets.QApplication.translate("MainWindow", "&View", None, -1))

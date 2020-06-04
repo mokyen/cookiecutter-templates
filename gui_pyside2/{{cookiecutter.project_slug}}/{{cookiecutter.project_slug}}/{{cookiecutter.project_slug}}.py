@@ -17,6 +17,7 @@ CONSOLE_TEXT_COLORS = {
 class {{cookiecutter.project_name}}(QtWidgets.QMainWindow, Ui_MainWindow):
 
     def __init__(self, verbose=False):
+        QtWidgets.QMainWindow.__init__(self)
         self.log = logger.setup_logger("{{ cookiecutter.project_slug }}", "{{ cookiecutter.project_slug }}.log")
 
         if verbose:
@@ -33,7 +34,7 @@ class {{cookiecutter.project_name}}(QtWidgets.QMainWindow, Ui_MainWindow):
         self.menubar.setNativeMenuBar(False)  # Until Qt fixes QMenu for Catalina
 
         # Add another handler so that we can emit log messages to the GUI.
-        thread_log = ThreadLogHandler()
+        thread_log = logger.ThreadLogHandler()
         self.log.addHandler(thread_log)
         thread_log.new_record.connect(self.log_message)
    
