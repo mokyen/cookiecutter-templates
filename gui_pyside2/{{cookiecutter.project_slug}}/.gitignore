@@ -3,9 +3,11 @@
 # Packages
 *.egg
 *.egg-info
+pip-wheel-metadata
 
-# Unit test / coverage reports
+# Unit test / coverage reports / tools
 .coverage
 .tox
 .pytest_cache
-
+.venv
+.vscode
