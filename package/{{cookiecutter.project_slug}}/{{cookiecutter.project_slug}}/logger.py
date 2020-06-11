@@ -1,3 +1,5 @@
+{% if cookiecutter.application_library|lower == 'application' %}
+
 """The logging and debug functionality."""
 import logging
 from logging import Logger
@@ -25,3 +27,5 @@ def setup_logger(root_name: str, log_file_path="") -> Logger:
 
     log.info(f"Log file created at: {log_file_path}")
     return log
+
+{%- endif %}
