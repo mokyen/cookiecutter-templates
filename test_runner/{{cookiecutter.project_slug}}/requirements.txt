@@ -1,0 +1,15 @@
+# Tools
+black
+pytest
+pytest-sugar
+pytest-stress
+pytest-repeat
+pytest-instafail
+pytest-timeout
+
+# Communication
+pyserial
+requests
+
+# Equipment Protcols
+pyvisa
