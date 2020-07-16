@@ -10,3 +10,13 @@ sections="FUTURE,STDLIB,THIRDPARTY,FIRSTPARTY,LOCALFOLDER"
 [tool.pytest.ini_options]
 minversion = "6.0"
 addopts = "-vv"
+
+[tool.pylint.'MESSAGES CONTROL']
+max-line-length = 100
+
+[build-system]
+requires = [
+    "setuptools >= 35.0.2",
+    "setuptools_scm >= 2.0.0, <3"
+]
+build-backend = "setuptools.build_meta"
