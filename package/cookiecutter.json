@@ -9,5 +9,5 @@
     "year": "2020",
     "command_line_interface": ["Click", "No command-line interface"],
     "application_library": ["Application", "Library"],
-    "python_matrix": "[3.6, 3.7, 3.8]"
+    "python_matrix": "[3.7, 3.8]"
 }

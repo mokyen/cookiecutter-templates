@@ -1,3 +1,12 @@
 [tool.black]
 line-length = 99
-target-version = ['py37']
+target-version = ['py38']
+
+[tool.isort]
+default_section = "THIRDPARTY"
+known_first_party = "{{ cookiecutter.project_slug }}"
+sections="FUTURE,STDLIB,THIRDPARTY,FIRSTPARTY,LOCALFOLDER"
+
+[tool.pytest.ini_options]
+minversion = "6.0"
+addopts = "-vv"
