@@ -8,3 +8,4 @@ pylint
 pytest
 tox
 PySide2
+bump2version
