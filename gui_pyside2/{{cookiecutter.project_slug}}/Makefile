@@ -1,13 +1,8 @@
-.PHONY: clean test lint run
+.PHONY: view clean
 
-tox:
-	tox -p all
-
-lint:
-	tox -e flake8,pylint 
-
-test:
-	tox -e test
+view:
+	pyside2-uic ./{{ cookiecutter.project_slug }}/view/main_window.ui -o ./{{ cookiecutter.project_slug }}/view/main_window.py --from-imports
+	pyside2-rcc ./{{ cookiecutter.project_slug }}/view/icons.qrc -o ./{{ cookiecutter.project_slug }}/view/icons_rc.py
 
 clean:
 	rm -rf .tox .pytest_cache htmlcov *.egg-info .coverage

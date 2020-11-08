@@ -1,0 +1,11 @@
+<RCC>
+  <qresource prefix="/">
+    <file>icons/16x16/bars.png</file>
+    <file>icons/16x16/clipboard-list.png</file>
+    <file>icons/16x16/home.png</file>
+    <file>icons/16x16/window-close.png</file>
+    <file>icons/16x16/window-maximize.png</file>
+    <file>icons/16x16/window-minimize.png</file>
+    <file>icons/16x16/wrench.png</file>
+  </qresource>
+</RCC>

@@ -2,5 +2,5 @@
 	"full_name": "David Patterson",
 	"project_name": "MyProjectName",
     "project_slug": "{{ cookiecutter.project_name.lower().replace(' ', '_').replace('-', '_') }}",
-	"project_short_description": "Description goes here.",	
+	"project_short_description": "Description goes here."
 }

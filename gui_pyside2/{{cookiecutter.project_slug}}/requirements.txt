@@ -1,0 +1,7 @@
+black
+isort
+pre-commit
+pylint
+pytest
+tox
+bump2version

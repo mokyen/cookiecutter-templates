@@ -1,12 +1,12 @@
 {
 	"full_name": "David Patterson",
 	"github_username": "jdpatt",
-	"project_name": "MyProjectName",
+	"project_name": "My Project Name",
     "project_slug": "{{ cookiecutter.project_name.lower().replace(' ', '_').replace('-', '_') }}",
 	"project_short_description": "Description goes here.",
-	
     "version": "0.1.0",
-    "year": "2020",
-    "command_line_interface": ["Click", "No command-line interface"],
-    "python_matrix": "[3.7, 3.8]"
+	"year": "2020",
+	"_copy_without_render": [
+        "*_rc.py"
+    ]
 }
