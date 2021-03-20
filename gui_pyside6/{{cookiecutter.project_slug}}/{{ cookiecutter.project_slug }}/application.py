@@ -1,7 +1,7 @@
 """{{ cookiecutter.project_slug }}"""
 import logging
 
-from PySide2 import QtCore, QtWidgets
+from PySide6 import QtCore, QtWidgets
 
 from {{ cookiecutter.project_slug }}.qt_logger import QTLogHandler
 from {{ cookiecutter.project_slug }}.view import console_colors

@@ -1,7 +1,7 @@
 """Logging Handler interface to QT's signal/slot system."""
 import logging
 
-from PySide2.QtCore import QObject, Signal
+from PySide6.QtCore import QObject, Signal
 
 
 class LogQObject(QObject):

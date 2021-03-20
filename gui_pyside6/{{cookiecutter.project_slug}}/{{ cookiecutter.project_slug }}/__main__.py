@@ -1,7 +1,7 @@
 import logging
 import sys
 
-from PySide2.QtWidgets import QApplication
+from PySide6.QtWidgets import QApplication
 
 from {{ cookiecutter.project_slug }} import __version__
 from {{ cookiecutter.project_slug }}.application import Application

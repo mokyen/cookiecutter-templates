@@ -2,7 +2,7 @@
 
 Personal Cookiecutter Templates
 
-## GUI Pyside2
+## GUI PySide6
 
 Base GUI application template that also has a click command line interface.  Creates a main window
 with a dock, status bar and some common menu items.

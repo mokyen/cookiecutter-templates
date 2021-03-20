@@ -16,7 +16,7 @@ setup(
     url="https://github.com/{{ cookiecutter.github_username }}/{{ cookiecutter.project_slug }}",
     packages=find_packages(),
     install_requires=[
-        "Pyside2",
+        "Pyside6",
     ],
     python_requires=">=3.8",
 )
